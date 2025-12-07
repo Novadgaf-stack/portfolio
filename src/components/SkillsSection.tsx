@@ -97,7 +97,7 @@ const SkillsSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="skills" className="py-24 md:py-32 relative bg-secondary/20" ref={ref}>
+    <section id="skills" className="py-16 md:py-24 lg:py-32 relative bg-secondary/20" ref={ref}>
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
       
@@ -108,36 +108,37 @@ const SkillsSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
           >
-            <div className="inline-block mb-4">
-              <span className="code-block text-sm">
+            {/* Hide code decoration on mobile */}
+            <div className="hidden sm:inline-block mb-4">
+              <span className="code-block text-xs sm:text-sm">
                 <span className="text-primary">import</span>{" "}
                 <span className="text-foreground">{"{ skills }"}</span>{" "}
                 <span className="text-primary">from</span>{" "}
                 <span className="text-terminal-green">"@philip/expertise"</span>
               </span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 md:mb-6">
               Technical <span className="text-gradient">Arsenal</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-2">
               Mastery across the modern stack with advanced cloud integration patterns 
               and specialized focus on high-performance systems.
             </p>
           </motion.div>
 
           {/* Skills grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
             {skillCategories.map((category, categoryIndex) => (
               <motion.div
                 key={category.title}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-                className="glass rounded-2xl p-6"
+                className="glass rounded-xl sm:rounded-2xl p-4 sm:p-6"
               >
-                <h3 className="text-lg font-bold mb-6 flex items-center gap-2">
+                <h3 className="text-base sm:text-lg font-bold mb-4 md:mb-6 flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-primary" />
                   {category.title}
                 </h3>
@@ -158,12 +159,12 @@ const SkillsSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-16 text-center"
+            className="mt-10 md:mt-16 text-center"
           >
-            <p className="text-muted-foreground mb-8">
+            <p className="text-muted-foreground text-sm sm:text-base mb-6 md:mb-8">
               Core Technologies & Frameworks
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4">
               {["React", "TypeScript", "Python", "Node.js", "PostgreSQL", "Docker", "AWS", "Kubernetes", "Redis", "GraphQL"].map((tech, index) => (
                 <motion.span
                   key={tech}
@@ -171,7 +172,7 @@ const SkillsSection = () => {
                   animate={isInView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ delay: 0.8 + index * 0.05 }}
                   whileHover={{ scale: 1.1, y: -5 }}
-                  className="px-4 py-2 rounded-lg bg-card border border-border hover:border-primary/50 text-sm font-mono cursor-default transition-colors"
+                  className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-card border border-border hover:border-primary/50 text-xs sm:text-sm font-mono cursor-default transition-colors"
                 >
                   {tech}
                 </motion.span>
