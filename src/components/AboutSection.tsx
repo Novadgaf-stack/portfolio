@@ -43,21 +43,15 @@ const AboutSection = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-10 md:mb-16"
           >
-            {/* Hide code decoration on mobile */}
-            <div className="hidden sm:inline-block mb-4">
-              <span className="code-block text-xs sm:text-sm">
-                <span className="text-primary">const</span>{" "}
-                <span className="text-accent">expertise</span>{" "}
-                <span className="text-muted-foreground">=</span>{" "}
-                <span className="text-terminal-green">"Technical Specialization"</span>
-              </span>
-            </div>
+            <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
+              About Me
+            </span>
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 md:mb-6">
-              Building <span className="text-gradient">Performant</span> Systems
+              Crafting <span className="text-gradient">Performant</span> Solutions
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-2">
-              My cumulative experience focuses on building performant, scalable, and 
-              resilient software across the entire stack.
+              Three years of experience building scalable, resilient software 
+              across the entire technology stack.
             </p>
           </motion.div>
 
@@ -95,33 +89,24 @@ const AboutSection = () => {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={isInView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ duration: 0.6, delay: 0.4 }}
-                  className="mb-4 md:mb-6 relative"
+                  className="relative"
                 >
-                  <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-primary/30 glow-primary">
+                  <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-primary/30 glow-primary">
                     <img src={heroAvatar} alt="Philip Inem" className="w-full h-full object-cover" />
                   </div>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-t from-primary/20 to-transparent" />
                 </motion.div>
-                {/* Hide code block on small mobile */}
-                <div className="code-block text-xs sm:text-sm overflow-hidden w-full hidden xs:block">
-                  <div className="flex items-center gap-2 mb-3 md:mb-4 pb-2 md:pb-3 border-b border-border/50">
-                    <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-destructive/80" />
-                    <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-yellow-500/80" />
-                    <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-terminal-green/80" />
-                    <span className="ml-2 text-muted-foreground text-[10px] sm:text-xs">performance.ts</span>
+                
+                {/* Key highlights */}
+                <div className="mt-6 grid grid-cols-2 gap-3 w-full max-w-xs">
+                  <div className="glass rounded-lg p-3 text-center">
+                    <p className="text-xl font-bold text-gradient">20%</p>
+                    <p className="text-xs text-muted-foreground">Latency Reduced</p>
                   </div>
-                  <pre className="text-[10px] sm:text-xs md:text-sm overflow-x-auto">
-{`class LatencyOptimizer {
-  private target = 20;
-  
-  async optimize(feed: Stream) {
-    return this.apply({
-      caching: true,
-      batch: 1000
-    });
-  }
-}`}
-                  </pre>
+                  <div className="glass rounded-lg p-3 text-center">
+                    <p className="text-xl font-bold text-gradient">3+</p>
+                    <p className="text-xs text-muted-foreground">Years Experience</p>
+                  </div>
                 </div>
               </div>
             </div>

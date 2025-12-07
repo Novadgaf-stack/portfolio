@@ -35,16 +35,13 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="inline-block mb-6">
-            <div className="code-block inline-flex items-center gap-2 text-sm">
-              <span className="text-terminal-green">$</span>
-              <span className="text-muted-foreground">whoami</span>
-              <span className="text-primary">→</span>
-              <span className="text-foreground">philip.inem</span>
-            </div>
+            <span className="px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
+              Open to new opportunities
+            </span>
           </motion.div>
 
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Engineering <span className="text-gradient">Zero-Downtime</span><br />Systems at Scale
+            Building <span className="text-gradient">High-Performance</span><br />Systems That Scale
           </motion.h1>
 
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} className="text-xl sm:text-2xl md:text-3xl font-light mb-8">
