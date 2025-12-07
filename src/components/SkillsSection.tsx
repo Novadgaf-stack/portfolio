@@ -110,21 +110,15 @@ const SkillsSection = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-10 md:mb-16"
           >
-            {/* Hide code decoration on mobile */}
-            <div className="hidden sm:inline-block mb-4">
-              <span className="code-block text-xs sm:text-sm">
-                <span className="text-primary">import</span>{" "}
-                <span className="text-foreground">{"{ skills }"}</span>{" "}
-                <span className="text-primary">from</span>{" "}
-                <span className="text-terminal-green">"@philip/expertise"</span>
-              </span>
-            </div>
+            <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
+              Technical Skills
+            </span>
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 md:mb-6">
-              Technical <span className="text-gradient">Arsenal</span>
+              My <span className="text-gradient">Expertise</span>
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-2">
-              Mastery across the modern stack with advanced cloud integration patterns 
-              and specialized focus on high-performance systems.
+              Comprehensive skills across modern technologies with a focus on 
+              performance optimization and scalable architecture.
             </p>
           </motion.div>
 

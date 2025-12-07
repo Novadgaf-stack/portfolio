@@ -99,20 +99,15 @@ const ProjectsSection = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-10 md:mb-16"
           >
-            {/* Hide code decoration on mobile for cleaner look */}
-            <div className="hidden sm:inline-block mb-4">
-              <span className="code-block text-xs sm:text-sm">
-                <span className="text-primary">async function</span>{" "}
-                <span className="text-accent">buildProject</span>
-                <span className="text-muted-foreground">()</span>{" "}
-                <span className="text-muted-foreground">{"{"}</span>
-              </span>
-            </div>
+            <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
+              Portfolio
+            </span>
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 md:mb-6">
               Featured <span className="text-gradient">Projects</span>
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-2">
-              Production-ready applications showcasing full-stack expertise and modern development practices.
+              A collection of production-ready applications demonstrating my expertise 
+              in building scalable, user-focused solutions.
             </p>
           </motion.div>
 

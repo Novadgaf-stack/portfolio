@@ -100,7 +100,7 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="py-24 md:py-32 relative" ref={ref}>
+    <section id="contact" className="py-16 md:py-24 lg:py-32 relative" ref={ref}>
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section header */}
@@ -108,21 +108,17 @@ const ContactSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
           >
-            <div className="inline-block mb-4">
-              <span className="code-block text-sm">
-                <span className="text-primary">await</span>{" "}
-                <span className="text-accent">connect</span>
-                <span className="text-muted-foreground">(you, me);</span>
-              </span>
-            </div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+            <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
+              Get In Touch
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 md:mb-6">
               Let's <span className="text-gradient">Collaborate</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-2">
               Ready to build something exceptional? I'm always open to discussing 
-              new projects, creative ideas, or opportunities to be part of your visions.
+              new projects, creative ideas, or opportunities.
             </p>
           </motion.div>
 

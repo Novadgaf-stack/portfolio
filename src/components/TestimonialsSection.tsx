@@ -38,7 +38,7 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section id="testimonials" className="py-24 md:py-32 relative bg-secondary/20" ref={ref}>
+    <section id="testimonials" className="py-16 md:py-24 lg:py-32 relative bg-secondary/20" ref={ref}>
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px]" />
@@ -50,16 +50,13 @@ const TestimonialsSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
           >
-            <div className="inline-block mb-4">
-              <span className="code-block text-sm">
-                <span className="text-primary">{"// "}</span>
-                <span className="text-muted-foreground">What clients say</span>
-              </span>
-            </div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Endorsements on <span className="text-gradient">Impact</span>
+            <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
+              Testimonials
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 md:mb-6">
+              What People <span className="text-gradient">Say</span>
             </h2>
           </motion.div>
 
