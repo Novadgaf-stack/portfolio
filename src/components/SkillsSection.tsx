@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import SkillsRadarChart from "./SkillsRadarChart";
 
 const skillCategories = [
   {
@@ -92,9 +93,12 @@ const SkillBar = ({ name, level, delay }: { name: string; level: number; delay: 
   );
 };
 
+
+
 const SkillsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [viewMode, setViewMode] = useState<"radar" | "bars">("radar");
 
   return (
     <section id="skills" className="py-16 md:py-24 lg:py-32 relative bg-secondary/20" ref={ref}>
@@ -116,37 +120,79 @@ const SkillsSection = () => {
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 md:mb-6">
               My <span className="text-gradient">Expertise</span>
             </h2>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-2">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-2 mb-8">
               Comprehensive skills across modern technologies with a focus on 
               performance optimization and scalable architecture.
             </p>
+            
+            {/* View toggle */}
+            <div className="inline-flex items-center gap-2 p-1 rounded-lg bg-secondary/50 border border-border">
+              <button
+                onClick={() => setViewMode("radar")}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                  viewMode === "radar" 
+                    ? "bg-primary text-primary-foreground" 
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                Radar View
+              </button>
+              <button
+                onClick={() => setViewMode("bars")}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                  viewMode === "bars" 
+                    ? "bg-primary text-primary-foreground" 
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                Detailed View
+              </button>
+            </div>
           </motion.div>
 
-          {/* Skills grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-            {skillCategories.map((category, categoryIndex) => (
-              <motion.div
-                key={category.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-                className="glass rounded-xl sm:rounded-2xl p-4 sm:p-6"
-              >
-                <h3 className="text-base sm:text-lg font-bold mb-4 md:mb-6 flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary" />
-                  {category.title}
-                </h3>
-                {category.skills.map((skill, skillIndex) => (
-                  <SkillBar
-                    key={skill.name}
-                    name={skill.name}
-                    level={skill.level}
-                    delay={categoryIndex * 0.1 + skillIndex * 0.05}
-                  />
-                ))}
-              </motion.div>
-            ))}
-          </div>
+          {/* Radar Chart View */}
+          {viewMode === "radar" && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="flex justify-center mb-12"
+            >
+              <SkillsRadarChart />
+            </motion.div>
+          )}
+
+          {/* Skills grid - Bar View */}
+          {viewMode === "bars" && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8"
+            >
+              {skillCategories.map((category, categoryIndex) => (
+                <motion.div
+                  key={category.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
+                  className="glass rounded-xl sm:rounded-2xl p-4 sm:p-6"
+                >
+                  <h3 className="text-base sm:text-lg font-bold mb-4 md:mb-6 flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-primary" />
+                    {category.title}
+                  </h3>
+                  {category.skills.map((skill, skillIndex) => (
+                    <SkillBar
+                      key={skill.name}
+                      name={skill.name}
+                      level={skill.level}
+                      delay={categoryIndex * 0.1 + skillIndex * 0.05}
+                    />
+                  ))}
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
 
           {/* Tech logos/icons section */}
           <motion.div
