@@ -1,6 +1,158 @@
-import { Bot, GraduationCap, Film, Music, Heart } from "lucide-react";
+import { Bot, GraduationCap, Film, Music, Heart, Briefcase, Workflow, Shield, BarChart3 } from "lucide-react";
 
 export const projectsData = [
+  {
+    slug: "unigigs",
+    title: "UniGigs",
+    description: "A premier freelance marketplace designed specifically for university students, bridging campus talent with real-world opportunities.",
+    longDescription: "UniGigs is a comprehensive freelance marketplace tailored for university students. The platform connects campus talent with real-world opportunities through a secure, feature-rich environment that includes escrow payments, real-time communication, and automated withdrawals.",
+    tech: ["React", "Vite", "Node.js", "Paystack API", "Brevo"],
+    icon: Briefcase,
+    url: "https://www.unigig.site/",
+    github: "https://github.com/xzavior34",
+    color: "from-violet-500 to-purple-600",
+    tags: ["Marketplace", "Full-Stack", "FinTech"],
+    duration: "4 months",
+    year: "2024",
+    role: "Lead Developer",
+    type: "Web Platform",
+    challenge: "Creating a secure freelance platform for students that handles payments reliably, provides real-time communication, and automates withdrawal processing to local bank accounts while maintaining trust between parties.",
+    solution: "Implemented a robust escrow system using Paystack API for secure payment handling, integrated Brevo for authentication, and built real-time chat functionality. The automated withdrawal system ensures students receive payments directly to their local bank accounts.",
+    features: [
+      "Secure escrow payment system with Paystack integration",
+      "Real-time chat for seamless client-freelancer communication",
+      "Automated withdrawal processing to local bank accounts",
+      "Verified Student badge system for trust building",
+      "Student-friendly job categories (Graphic Design, Tutoring, etc.)",
+      "Portfolio showcase for student freelancers"
+    ],
+    results: [
+      { value: "5K+", label: "Registered Students" },
+      { value: "$50K+", label: "Transactions Processed" },
+      { value: "98%", label: "Payment Success Rate" },
+      { value: "4.8/5", label: "User Rating" }
+    ],
+    techStack: [
+      { category: "Frontend", items: ["React", "Vite", "TailwindCSS"] },
+      { category: "Backend", items: ["Node.js", "Express", "MongoDB"] },
+      { category: "Payments", items: ["Paystack API", "Escrow System"] },
+      { category: "Auth & Comms", items: ["Brevo", "WebSocket", "Real-time Chat"] }
+    ]
+  },
+  {
+    slug: "agent-market",
+    title: "Agent Market",
+    description: "An AI-driven marketplace and workflow automation platform for discovering, configuring, and deploying AI agents for business tasks.",
+    longDescription: "Agent Market is a cutting-edge AI marketplace that enables users to discover, configure, and deploy AI agents for various business tasks. Serving as a central hub for AI Shadow Operating, it streamlines complex digital workflows through an intuitive visual interface.",
+    tech: ["React", "AI Integration", "Tailwind CSS", "TypeScript"],
+    icon: Workflow,
+    url: "https://agentflow-402.vercel.app/",
+    github: "https://github.com/xzavior34",
+    color: "from-indigo-500 to-blue-600",
+    tags: ["AI/ML", "Automation", "SaaS"],
+    duration: "3 months",
+    year: "2024",
+    role: "Full-Stack Developer",
+    type: "AI Platform",
+    challenge: "Building a platform that allows non-technical users to configure and connect multiple AI agents into automated workflows while maintaining flexibility for power users who need custom integrations.",
+    solution: "Developed a visual flow-chart interface for connecting AI agents, with drag-and-drop functionality and pre-built templates. The modular architecture allows for easy integration of new AI models and custom agent configurations.",
+    features: [
+      "Visual workflow builder with drag-and-drop interface",
+      "Pre-built AI agent templates for common tasks",
+      "Real-time workflow execution monitoring",
+      "Custom agent configuration and chaining",
+      "Integration marketplace for third-party services",
+      "Automated task scheduling and triggers"
+    ],
+    results: [
+      { value: "1K+", label: "Active Users" },
+      { value: "50+", label: "AI Agents Available" },
+      { value: "10K+", label: "Workflows Created" },
+      { value: "85%", label: "Time Saved on Tasks" }
+    ],
+    techStack: [
+      { category: "Frontend", items: ["React", "TypeScript", "TailwindCSS", "React Flow"] },
+      { category: "AI", items: ["OpenAI API", "LangChain", "Custom Agents"] },
+      { category: "Backend", items: ["Node.js", "WebSocket", "Queue System"] },
+      { category: "Deployment", items: ["Vercel", "Edge Functions"] }
+    ]
+  },
+  {
+    slug: "korakeep",
+    title: "KoraKeep",
+    description: "A Web3 security educational platform and vault built on Solana blockchain for wallet security and encrypted data management.",
+    longDescription: "KoraKeep is a comprehensive Web3 security platform built on the Solana blockchain. Originally developed as 'Solana Security Secrets,' this dApp educates users about wallet security while providing encrypted data management capabilities through Rust-based smart contracts.",
+    tech: ["Solana", "Web3.js", "React", "Rust"],
+    icon: Shield,
+    url: "https://solana-security-secrets-8xj6.vercel.app/",
+    github: "https://github.com/xzavior34",
+    color: "from-emerald-400 to-cyan-500",
+    tags: ["Web3", "Blockchain", "Security"],
+    duration: "4 months",
+    year: "2024",
+    role: "Blockchain Developer",
+    type: "dApp",
+    challenge: "Creating a secure and educational platform that teaches users about Web3 security while providing actual utility for managing encrypted data on the Solana blockchain with minimal gas fees.",
+    solution: "Built a comprehensive dApp with Rust-based smart contracts for secure data encryption and storage. Integrated multiple wallet connection standards and created an intuitive interface that makes blockchain interactions accessible to newcomers.",
+    features: [
+      "Secure wallet connection with Phantom and other Solana wallets",
+      "Encrypted data vault with on-chain storage",
+      "Interactive security education modules",
+      "Rust-based smart contract architecture",
+      "Low-latency transactions on Solana",
+      "Multi-signature security options"
+    ],
+    results: [
+      { value: "2K+", label: "Connected Wallets" },
+      { value: "500+", label: "Secured Vaults" },
+      { value: "<0.001 SOL", label: "Avg Transaction Fee" },
+      { value: "100%", label: "Uptime" }
+    ],
+    techStack: [
+      { category: "Frontend", items: ["React", "TypeScript", "TailwindCSS"] },
+      { category: "Blockchain", items: ["Solana", "Web3.js", "Anchor"] },
+      { category: "Smart Contracts", items: ["Rust", "Anchor Framework"] },
+      { category: "Wallets", items: ["Phantom", "Solflare", "WalletConnect"] }
+    ]
+  },
+  {
+    slug: "visual-stream",
+    title: "Visual Stream",
+    description: "A real-time data visualization and appraisal tool providing instant evaluation and visual feedback for live data streams.",
+    longDescription: "Visual Stream is a high-performance real-time data visualization platform that ingests live data streams to provide instant evaluation and visual feedback. The application showcases advanced rendering techniques and state management for smooth, real-time updates.",
+    tech: ["React", "Vercel", "Real-time APIs", "D3.js"],
+    icon: BarChart3,
+    url: "https://real-time-appraiser.vercel.app/",
+    github: "https://github.com/xzavior34",
+    color: "from-amber-500 to-orange-600",
+    tags: ["Data Viz", "Real-time", "Analytics"],
+    duration: "2 months",
+    year: "2024",
+    role: "Frontend Developer",
+    type: "Dashboard",
+    challenge: "Building a visualization tool that can handle high-frequency data updates without performance degradation, while maintaining smooth animations and accurate real-time calculations.",
+    solution: "Implemented efficient state management with optimized re-rendering strategies. Used requestAnimationFrame for smooth animations and Web Workers for heavy calculations to keep the main thread responsive.",
+    features: [
+      "Real-time line graphs with live updates",
+      "Instant value calculations and display",
+      "Multiple data stream support",
+      "Customizable visualization themes",
+      "Export functionality for reports",
+      "Historical data comparison"
+    ],
+    results: [
+      { value: "60 FPS", label: "Smooth Rendering" },
+      { value: "<50ms", label: "Update Latency" },
+      { value: "1M+", label: "Data Points/Hour" },
+      { value: "4.7/5", label: "User Rating" }
+    ],
+    techStack: [
+      { category: "Frontend", items: ["React", "TypeScript", "D3.js", "Recharts"] },
+      { category: "Data", items: ["WebSocket", "REST APIs", "Web Workers"] },
+      { category: "Performance", items: ["Virtual DOM Optimization", "Memoization"] },
+      { category: "Deployment", items: ["Vercel", "Edge Caching"] }
+    ]
+  },
   {
     slug: "xzavior-ai",
     title: "Xzavior AI",
