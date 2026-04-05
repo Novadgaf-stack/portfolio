@@ -4,7 +4,6 @@ import { Mail, Send, Github, Linkedin, MapPin, Clock, CheckCircle } from "lucide
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
 
 const ContactSection = () => {
   const ref = useRef(null);
@@ -23,44 +22,38 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      // Save to database
-      const { error: dbError } = await supabase
-        .from('contact_submissions')
-        .insert({
+      // Send directly to email via Web3Forms
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "8e7e0d48-9dd0-4195-9dfb-d94a49f5c1c3", 
           name: formData.name,
           email: formData.email,
           message: formData.message,
+          subject: `New Portfolio Message from ${formData.name}`,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSuccess(true);
+        toast({
+          title: "Message sent successfully!",
+          description: "Thank you for reaching out. I'll get back to you within 24 hours.",
         });
 
-      if (dbError) {
-        console.error("Database error:", dbError);
-        throw new Error("Failed to save submission");
+        setFormData({ name: "", email: "", message: "" });
+        
+        // Reset success state after 5 seconds
+        setTimeout(() => setIsSuccess(false), 5000);
+      } else {
+        throw new Error("Failed to send message");
       }
-
-      // Send email notification
-      const { error: emailError } = await supabase.functions.invoke('send-contact-email', {
-        body: {
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-        },
-      });
-
-      if (emailError) {
-        console.error("Email error:", emailError);
-        // Don't throw - still saved to DB
-      }
-
-      setIsSuccess(true);
-      toast({
-        title: "Message sent successfully!",
-        description: "Thank you for reaching out. I'll get back to you within 24 hours.",
-      });
-
-      setFormData({ name: "", email: "", message: "" });
-      
-      // Reset success state after 5 seconds
-      setTimeout(() => setIsSuccess(false), 5000);
     } catch (error) {
       console.error("Submission error:", error);
       toast({
