@@ -31,11 +31,12 @@ const ProjectDetail = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-16 relative">
+      <section className="pt-32 pb-16 relative z-10">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
             className="max-w-5xl mx-auto"
           >
@@ -124,11 +125,12 @@ const ProjectDetail = () => {
       </section>
 
       {/* Screenshot Section */}
-      <section className="py-12 md:py-16">
+      <section className="py-12 md:py-16 relative z-10">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="max-w-5xl mx-auto"
           >
@@ -153,7 +155,7 @@ const ProjectDetail = () => {
       </section>
 
       {/* Case Study Content */}
-      <section className="py-12 md:py-16">
+      <section className="py-12 md:py-16 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="grid lg:grid-cols-3 gap-8 md:gap-12">
@@ -162,7 +164,8 @@ const ProjectDetail = () => {
                 {/* The Challenge */}
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.6, delay: 0.3 }}
                 >
                   <h2 className="text-2xl md:text-3xl font-bold mb-6">The Challenge</h2>
@@ -174,7 +177,8 @@ const ProjectDetail = () => {
                 {/* The Solution */}
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.6, delay: 0.4 }}
                 >
                   <h2 className="text-2xl md:text-3xl font-bold mb-6">The Solution</h2>
@@ -186,7 +190,8 @@ const ProjectDetail = () => {
                 {/* Key Features */}
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.6, delay: 0.5 }}
                 >
                   <h2 className="text-2xl md:text-3xl font-bold mb-6">Key Features</h2>
@@ -203,7 +208,8 @@ const ProjectDetail = () => {
                 {/* Results */}
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.6, delay: 0.6 }}
                 >
                   <h2 className="text-2xl md:text-3xl font-bold mb-6">Results & Impact</h2>
@@ -223,7 +229,8 @@ const ProjectDetail = () => {
               {/* Sidebar - Tech Stack */}
               <motion.div
                 initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="lg:col-span-1"
               >
