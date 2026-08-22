@@ -1,7 +1,12 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+﻿import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Zap, Shield, Database, Cpu } from "lucide-react";
+import {
+  Zap,
+  Shield,
+  Database,
+  Cpu,
+  ArrowUpRight,
+} from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import heroAvatar from "@/assets/hero-avatar.png";
 
@@ -9,127 +14,213 @@ const specializations = [
   {
     icon: Zap,
     title: "Architecture & Scalability",
-    description: "Designing secure, modular, and fault-tolerant full-stack systems built for high traffic and long-term maintenance.",
+    description:
+      "Designing modular full-stack systems with clean boundaries, reliable APIs, and room to scale.",
   },
   {
     icon: Cpu,
-    title: "Performance Optimization",
-    description: "Specialized focus on algorithmic efficiency, low-latency processing, and optimizing mission-critical database queries.",
+    title: "Performance Engineering",
+    description:
+      "Improving application speed, data processing, and database efficiency across critical workflows.",
   },
   {
     icon: Shield,
-    title: "Data & Systems Integrity",
-    description: "Implementing secure data modeling, robust testing (unit/integration), and zero-downtime deployment strategies.",
+    title: "Security & Reliability",
+    description:
+      "Building secure authentication, resilient services, robust validation, and dependable deployments.",
   },
   {
     icon: Database,
-    title: "Front-End Engineering",
-    description: "Expertise in React/Tailwind/Framer Motion for high-fidelity UI/UX, accessibility, and fluid responsiveness.",
+    title: "Frontend Engineering",
+    description:
+      "Creating responsive React interfaces with strong UX, accessibility, animation, and maintainable component systems.",
   },
 ];
 
 const AboutSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, {
+    once: true,
+    margin: "-100px",
+  });
 
   return (
-    <section id="about" className="py-16 md:py-24 lg:py-32 relative" ref={ref}>
+    <section
+      id="about"
+      ref={ref}
+      className="relative py-20 md:py-28 lg:py-32"
+    >
       <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          {/* Section header */}
+        <div className="mx-auto max-w-6xl">
+          {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-center mb-10 md:mb-16"
+            className="mb-12 text-center md:mb-16"
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
+            <span className="mb-5 inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
               About Me
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 md:mb-6">
-              Crafting <span className="text-gradient">Performant</span> Solutions
+
+            <h2 className="mb-5 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
+              Engineering with{" "}
+              <span className="text-gradient">purpose.</span>
             </h2>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-2">
-              Three years of experience building scalable, resilient software 
-              across the entire technology stack.
+
+            <p className="mx-auto max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base md:text-lg">
+              I build modern software across the stack, combining product
+              thinking, frontend engineering, backend architecture, and
+              reliable systems to turn ideas into software that can actually
+              ship and evolve.
             </p>
           </motion.div>
 
-          {/* Experience highlight */}
+          {/* Experience */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="glass rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-10 mb-10 md:mb-16"
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="mb-12 overflow-hidden rounded-3xl border border-border/60 bg-card/50 p-5 shadow-2xl backdrop-blur-xl md:mb-16 md:p-8 lg:p-10"
           >
-            <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
+            <div className="grid items-center gap-10 lg:grid-cols-[1.35fr_0.65fr]">
               <div>
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 md:mb-4">
-                  Professional Experience
+                <div className="mb-5 flex items-center gap-3">
+                  <span className="h-px w-8 bg-primary" />
+                  <span className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
+                    Experience
+                  </span>
+                </div>
+
+                <h3 className="mb-5 text-2xl font-bold tracking-tight sm:text-3xl">
+                  From building interfaces to engineering systems.
                 </h3>
-                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-4 md:mb-6">
-                  My expertise was sharply developed during my tenure at{" "}
-                  <span className="text-primary font-semibold">Springer Capital</span>, 
-                  where I was integral to a team managing low-latency FinTech systems. 
-                  I actively contributed to optimizing data feeds for algorithmic models, 
-                  successfully pioneering solutions that resulted in a calculated{" "}
-                  <span className="text-gradient font-bold">20% reduction</span> in trade 
-                  execution latency across high-frequency data streams.
-                </p>
-                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed hidden sm:block">
-                  This rigorous environment is complemented by extensive experience via{" "}
-                  <span className="text-primary font-semibold">Forage</span>, where I 
-                  oversaw the end-to-end design and deployment of a secure, API-driven 
-                  microservice mesh using containers.
-                </p>
+
+                <div className="space-y-4 text-sm leading-7 text-muted-foreground sm:text-base">
+                  <p>
+                    My development experience has exposed me to both product
+                    interfaces and the systems behind them. I focus on writing
+                    software that is understandable, maintainable, and built
+                    with its next stage of growth in mind.
+                  </p>
+
+                  <p>
+                    Through practical projects and professional experience, I
+                    have worked with modern frontend technologies, backend
+                    services, databases, APIs, authentication, and deployment
+                    workflows.
+                  </p>
+                </div>
+
+                <div className="mt-7 flex flex-wrap gap-3">
+                  {["React", "TypeScript", "Node.js", "PostgreSQL", "REST APIs"].map(
+                    (technology) => (
+                      <span
+                        key={technology}
+                        className="rounded-full border border-border/60 bg-background/50 px-3 py-1.5 font-mono text-xs text-muted-foreground"
+                      >
+                        {technology}
+                      </span>
+                    )
+                  )}
+                </div>
               </div>
-            <div className="relative flex flex-col items-center">
-                {/* Avatar */}
+
+              <div className="relative flex flex-col items-center">
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.6, delay: 0.4 }}
+                  initial={{ opacity: 0, scale: 0.85 }}
+                  animate={
+                    isInView
+                      ? { opacity: 1, scale: 1 }
+                      : { opacity: 0, scale: 0.85 }
+                  }
+                  transition={{ duration: 0.7, delay: 0.3 }}
                   className="relative"
                 >
-                  <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-primary/30 glow-primary">
-                    <img src={heroAvatar} alt="Philip Inem" className="w-full h-full object-cover" />
+                  <div className="absolute -inset-4 rounded-full bg-primary/10 blur-2xl" />
+
+                  <div className="relative h-36 w-36 overflow-hidden rounded-full border-2 border-primary/30 bg-card shadow-2xl sm:h-44 sm:w-44">
+                    <img
+                      src={heroAvatar}
+                      alt="Isaac Akinkunmi"
+                      className="h-full w-full object-cover"
+                    />
                   </div>
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-t from-primary/20 to-transparent" />
                 </motion.div>
-                
-                {/* Key highlights */}
-                <div className="mt-6 grid grid-cols-2 gap-3 w-full max-w-xs">
-                  <div className="glass rounded-lg p-3 text-center">
-                    <p className="text-xl font-bold text-gradient">20%</p>
-                    <p className="text-xs text-muted-foreground">Latency Reduced</p>
+
+                <div className="mt-7 grid w-full max-w-xs grid-cols-2 gap-3">
+                  <div className="rounded-2xl border border-border/50 bg-background/50 p-4 text-center">
+                    <p className="text-2xl font-bold text-gradient">3+</p>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      Years Building
+                    </p>
                   </div>
-                  <div className="glass rounded-lg p-3 text-center">
-                    <p className="text-xl font-bold text-gradient">3+</p>
-                    <p className="text-xs text-muted-foreground">Years Experience</p>
+
+                  <div className="rounded-2xl border border-border/50 bg-background/50 p-4 text-center">
+                    <p className="text-2xl font-bold text-gradient">Full</p>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      Stack Focus
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Specializations grid */}
-          <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
+          {/* Specializations */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mb-7 flex items-end justify-between gap-4"
+          >
+            <div>
+              <p className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-primary">
+                What I Do
+              </p>
+              <h3 className="text-2xl font-bold tracking-tight sm:text-3xl">
+                Engineering strengths
+              </h3>
+            </div>
+
+            <ArrowUpRight className="hidden h-6 w-6 text-muted-foreground sm:block" />
+          </motion.div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
             {specializations.map((spec, index) => (
               <motion.div
                 key={spec.title}
                 initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                animate={
+                  isInView
+                    ? { opacity: 1, y: 0 }
+                    : { opacity: 0, y: 30 }
+                }
+                transition={{
+                  duration: 0.6,
+                  delay: 0.35 + index * 0.08,
+                }}
               >
-                <Card variant="glow" className="h-full p-4 sm:p-6 md:p-8 group">
+                <Card
+                  variant="glow"
+                  className="group h-full rounded-2xl p-5 transition-transform duration-300 hover:-translate-y-1 sm:p-6"
+                >
                   <CardContent className="p-0">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 md:mb-6 group-hover:bg-primary/20 transition-colors">
-                      <spec.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                    <div className="mb-5 flex items-center justify-between">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-primary/15 bg-primary/10">
+                        <spec.icon className="h-5 w-5 text-primary" />
+                      </div>
+
+                      <span className="font-mono text-xs text-muted-foreground/50">
+                        0{index + 1}
+                      </span>
                     </div>
-                    <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 md:mb-3 group-hover:text-primary transition-colors">
+
+                    <h4 className="mb-3 text-lg font-bold transition-colors group-hover:text-primary sm:text-xl">
                       {spec.title}
-                    </h3>
-                    <p className="text-muted-foreground text-xs sm:text-sm md:text-base leading-relaxed">
+                    </h4>
+
+                    <p className="text-sm leading-7 text-muted-foreground">
                       {spec.description}
                     </p>
                   </CardContent>

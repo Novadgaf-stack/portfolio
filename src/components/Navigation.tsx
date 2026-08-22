@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Terminal } from "lucide-react";
 import { Button } from "./ui/button";
@@ -17,42 +17,59 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 40);
     };
+
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
 
   return (
     <>
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled ? "glass-strong py-3" : "py-6"
+        transition={{ duration: 0.5 }}
+        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${
+          isScrolled
+            ? "border-b border-border/50 bg-background/90 py-3 backdrop-blur-2xl"
+            : "bg-transparent py-5"
         }`}
       >
-        <div className="container mx-auto px-4 flex items-center justify-between">
+        <div className="container mx-auto flex items-center justify-between px-4">
           <motion.a
-            href="#"
-            className="flex items-center gap-2 text-xl font-bold"
-            whileHover={{ scale: 1.05 }}
+            href="#home"
+            className="group flex items-center gap-2"
+            whileHover={{ scale: 1.03 }}
+            aria-label="Nova home"
           >
-            <Terminal className="w-6 h-6 text-primary" />
-            <span className="font-mono">
-              <span className="text-primary">philip</span>
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-primary/20 bg-primary/10">
+              <Terminal className="h-5 w-5 text-primary" />
+            </div>
+
+            <span className="font-mono text-lg font-bold tracking-tight">
+              <span className="text-primary">nova</span>
               <span className="text-muted-foreground">.</span>
               <span className="text-foreground">dev</span>
             </span>
           </motion.a>
 
-          {/* Desktop Navigation */}
-          <ul className="hidden md:flex items-center gap-8">
+          <ul className="hidden items-center gap-7 md:flex">
             {navItems.map((item) => (
               <li key={item.label}>
                 <a
                   href={item.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors link-underline"
+                  className="link-underline text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
                   {item.label}
                 </a>
@@ -66,56 +83,70 @@ const Navigation = () => {
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
           <Button
             variant="ghost"
             size="icon"
             className="md:hidden"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() => setIsMobileMenuOpen((open) => !open)}
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? <X /> : <Menu />}
           </Button>
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl pt-24 md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-40 bg-background/95 pt-24 backdrop-blur-2xl md:hidden"
           >
-            <ul className="flex flex-col items-center gap-6 p-8">
-              {navItems.map((item, index) => (
-                <motion.li
-                  key={item.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <a
-                    href={item.href}
-                    className="text-2xl font-medium text-foreground hover:text-primary transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
+            <div className="container mx-auto px-6">
+              <div className="mb-8 rounded-2xl border border-border/50 bg-card/40 p-5">
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
+                  Isaac / Nova
+                </p>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Full-Stack Developer & Software Engineer
+                </p>
+              </div>
+
+              <ul className="flex flex-col gap-2">
+                {navItems.map((item, index) => (
+                  <motion.li
+                    key={item.label}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.06 }}
                   >
-                    {item.label}
-                  </a>
-                </motion.li>
-              ))}
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: navItems.length * 0.1 }}
+                    <a
+                      href={item.href}
+                      className="block rounded-xl px-4 py-3 text-xl font-medium text-foreground transition-colors hover:bg-secondary hover:text-primary"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  </motion.li>
+                ))}
+              </ul>
+
+              <Button
+                variant="hero"
+                size="xl"
+                className="mt-6 w-full"
+                asChild
               >
-                <Button variant="hero" size="xl" asChild>
-                  <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
-                    Let's Talk
-                  </a>
-                </Button>
-              </motion.li>
-            </ul>
+                <a
+                  href="#contact"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Let's Talk
+                </a>
+              </Button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

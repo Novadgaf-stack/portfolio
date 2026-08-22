@@ -1,4 +1,4 @@
-import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
+﻿import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 
@@ -15,7 +15,6 @@ interface ContactEmailRequest {
 }
 
 const handler = async (req: Request): Promise<Response> => {
-  // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
@@ -25,7 +24,6 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Received contact form submission:", { name, email });
 
-    // Send notification to Philip
     const notificationRes = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -79,7 +77,6 @@ const handler = async (req: Request): Promise<Response> => {
     const notificationData = await notificationRes.json();
     console.log("Notification email sent:", notificationData);
 
-    // Send confirmation to the sender
     const confirmationRes = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -120,7 +117,7 @@ const handler = async (req: Request): Promise<Response> => {
                   <a href="https://www.linkedin.com/in/philip-inem" class="link">LinkedIn</a>
                 </div>
                 <div class="footer">
-                  © ${new Date().getFullYear()} Philip Inem • Engineering Zero-Downtime Systems
+                  © ${new Date().getFullYear()} Philip Inem • Engineering Zero-DowntimeSystems
                 </div>
               </div>
             </body>
@@ -133,24 +130,28 @@ const handler = async (req: Request): Promise<Response> => {
     console.log("Confirmation email sent:", confirmationData);
 
     return new Response(
-      JSON.stringify({ 
-        success: true, 
+      JSON.stringify({
+        success: true,
         notificationId: notificationData.id,
-        confirmationId: confirmationData.id 
+        confirmationId: confirmationData.id,
       }),
       {
         status: 200,
         headers: { "Content-Type": "application/json", ...corsHeaders },
-      }
+      },
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error in send-contact-email function:", error);
+
+    const errorMessage =
+      error instanceof Error ? error.message : "An unknown error occurred";
+
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: errorMessage }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },
-      }
+      },
     );
   }
 };

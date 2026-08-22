@@ -1,127 +1,187 @@
-import { motion, useInView } from "framer-motion";
+﻿import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Quote,
+  ChevronLeft,
+  ChevronRight,
+  Globe2,
+  UserRound,
+  Code2,
+} from "lucide-react";
 import { Button } from "./ui/button";
 
 const testimonials = [
   {
-    quote: "Philip's work on low-latency architectures directly contributed to a 20% improvement in our transaction processing speed. His ability to deliver mission-critical microservice solutions is exceptional.",
-    author: "Senior PM, Springer Capital",
-    role: "Quantitative Development Lead",
-    highlight: "20% improvement",
+    quote:
+      "Isaac built a professional website for Nexnovate Business Concept and translated our vision into a modern digital presence that represents the business effectively.",
+    author: "Mr. & Mrs. Akinkunmi",
+    role: "Founders · Nexnovate Business Concept",
+    icon: Globe2,
   },
   {
-    quote: "He consistently demonstrated the capacity to transition complex business requirements into robust, full-stack applications, showing genuine technical leadership across the entire SDLC.",
-    author: "Project Manager, Forage Program",
-    role: "Software Engineering Mentor",
-    highlight: "technical leadership",
+    quote:
+      "Isaac developed my portfolio website with a strong focus on presentation, structure, and creating a professional online presence for my work.",
+    author: "Ireoluwa Sharon",
+    role: "Founder · Airs Studio",
+    icon: UserRound,
   },
   {
-    quote: "Beyond development, Philip optimized our database queries and enhanced our API-driven performance, dramatically improving user stability and reducing operational latency.",
-    author: "Founder, Sara Foundation",
-    role: "Digital Transformation Officer",
-    highlight: "dramatically improving",
+    quote:
+      "Isaac assisted me across several projects, contributing his full-stack development skills and helping move different parts of the work forward.",
+    author: "Philip Inem",
+    role: "Full-Stack Web Developer",
+    icon: Code2,
   },
 ];
 
 const TestimonialsSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, {
+    once: true,
+    margin: "-100px",
+  });
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const current = testimonials[currentIndex];
+  const Icon = current.icon;
+
   const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    setCurrentIndex(
+      (prev) => (prev + 1) % testimonials.length
+    );
   };
 
   const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setCurrentIndex(
+      (prev) =>
+        (prev - 1 + testimonials.length) % testimonials.length
+    );
   };
 
   return (
-    <section id="testimonials" className="py-16 md:py-24 lg:py-32 relative bg-secondary/20" ref={ref}>
-      {/* Background */}
+    <section
+      id="testimonials"
+      className="relative overflow-hidden bg-secondary/20 py-16 md:py-24 lg:py-32"
+      ref={ref}
+    >
       <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px]" />
-      
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto">
-          {/* Section header */}
+
+      <div className="absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5 blur-[150px]" />
+
+      <div className="container relative z-10 mx-auto px-4">
+        <div className="mx-auto max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={
+              isInView
+                ? { opacity: 1, y: 0 }
+                : {}
+            }
             transition={{ duration: 0.6 }}
-            className="text-center mb-10 md:mb-16"
+            className="mb-10 text-center md:mb-16"
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
-              Testimonials
+            <span className="mb-6 inline-block rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+              Client Feedback
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 md:mb-6">
-              What People <span className="text-gradient">Say</span>
+
+            <h2 className="mb-4 text-2xl font-bold sm:text-3xl md:mb-6 md:text-5xl">
+              What People{" "}
+              <span className="text-gradient">Say</span>
             </h2>
+
+            <p className="mx-auto max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base md:text-lg">
+              A few words from people and teams I have worked
+              with across websites, portfolios, and software
+              projects.
+            </p>
           </motion.div>
 
-          {/* Testimonial carousel */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            animate={
+              isInView
+                ? { opacity: 1, y: 0 }
+                : {}
+            }
+            transition={{
+              duration: 0.6,
+              delay: 0.2,
+            }}
             className="relative"
           >
-            <div className="glass-strong rounded-2xl p-8 md:p-12 text-center">
-              <Quote className="w-12 h-12 text-primary/30 mx-auto mb-6" />
-              
+            <div className="glass-strong rounded-2xl p-6 text-center sm:p-8 md:p-12">
               <motion.div
                 key={currentIndex}
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
-                transition={{ duration: 0.5 }}
+                initial={{
+                  opacity: 0,
+                  x: 40,
+                }}
+                animate={{
+                  opacity: 1,
+                  x: 0,
+                }}
+                transition={{
+                  duration: 0.45,
+                }}
               >
-                <p className="text-lg md:text-xl leading-relaxed mb-8 text-foreground/90">
-                  "{testimonials[currentIndex].quote.split(testimonials[currentIndex].highlight).map((part, i, arr) => (
-                    <span key={i}>
-                      {part}
-                      {i < arr.length - 1 && (
-                        <span className="text-gradient font-semibold">
-                          {testimonials[currentIndex].highlight}
-                        </span>
-                      )}
-                    </span>
-                  ))}"
+                <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10">
+                  <Icon className="h-6 w-6 text-primary" />
+                </div>
+
+                <Quote className="mx-auto mb-6 h-10 w-10 text-primary/25 md:h-12 md:w-12" />
+
+                <p className="mb-8 text-lg leading-relaxed text-foreground/90 md:text-xl">
+                  "{current.quote}"
                 </p>
-                
+
                 <div>
                   <p className="font-semibold text-foreground">
-                    {testimonials[currentIndex].author}
+                    {current.author}
                   </p>
+
                   <p className="text-sm text-muted-foreground">
-                    {testimonials[currentIndex].role}
+                    {current.role}
                   </p>
                 </div>
               </motion.div>
 
-              {/* Navigation */}
-              <div className="flex items-center justify-center gap-4 mt-8">
-                <Button variant="ghost" size="icon" onClick={prevTestimonial}>
-                  <ChevronLeft className="w-5 h-5" />
+              <div className="mt-8 flex items-center justify-center gap-4">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={prevTestimonial}
+                  aria-label="Previous testimonial"
+                >
+                  <ChevronLeft className="h-5 w-5" />
                 </Button>
-                
+
                 <div className="flex gap-2">
                   {testimonials.map((_, index) => (
                     <button
                       key={index}
+                      type="button"
                       onClick={() => setCurrentIndex(index)}
-                      className={`w-2 h-2 rounded-full transition-all ${
-                        index === currentIndex 
-                          ? "bg-primary w-8" 
-                          : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                      aria-label={`View testimonial ${index + 1}`}
+                      aria-current={
+                        index === currentIndex
+                      }
+                      className={`h-2 rounded-full transition-all ${
+                        index === currentIndex
+                          ? "w-8 bg-primary"
+                          : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
                       }`}
                     />
                   ))}
                 </div>
-                
-                <Button variant="ghost" size="icon" onClick={nextTestimonial}>
-                  <ChevronRight className="w-5 h-5" />
+
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={nextTestimonial}
+                  aria-label="Next testimonial"
+                >
+                  <ChevronRight className="h-5 w-5" />
                 </Button>
               </div>
             </div>
