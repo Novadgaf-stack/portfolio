@@ -1,4 +1,4 @@
-ï»¿import { motion, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import {
   Quote,
@@ -15,14 +15,14 @@ const testimonials = [
     quote:
       "Isaac built a professional website for Nexnovate Business Concept and translated our vision into a modern digital presence that represents the business effectively.",
     author: "Mr. & Mrs. Akinkunmi",
-    role: "Founders Â· Nexnovate Business Concept",
+    role: "Founders · Nexnovate Business Concept",
     icon: Globe2,
   },
   {
     quote:
       "Isaac developed my portfolio website with a strong focus on presentation, structure, and creating a professional online presence for my work.",
     author: "Ireoluwa Sharon",
-    role: "Founder Â· Airs Studio",
+    role: "Founder · AIRS Studio",
     icon: UserRound,
   },
   {
